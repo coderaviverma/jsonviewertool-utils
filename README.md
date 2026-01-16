@@ -83,4 +83,6 @@ If you find this project useful:
 - 🔁 Share with other developers
 - 💬 Provide feedback
 
+[![Documentation Status](https://readthedocs.org/projects/jsonviewertool-utils/badge/?version=latest)](https://jsonviewertool-utils.readthedocs.io/en/latest/)
+
 ### Built with ❤️ by the JSONViewerTool team
