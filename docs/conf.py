@@ -51,3 +51,13 @@ pygments_dark_style = "native"
 
 # Optional: If you keep API docs later
 # autodoc_default_options = {"members": True, "undoc-members": True, "show-inheritance": True}
+
+html_theme_options = {
+  "source_repository": "https://github.com/coderaviverma/jsonviewertool-utils/",
+  "source_branch": "main",
+  "source_directory": "docs/",
+}
+
+html_favicon = "_static/favicon.png"   # optional
+html_logo = "_static/logo.png"         # optional
+
