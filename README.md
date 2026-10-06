@@ -1,88 +1,63 @@
 # JSONViewerTool Utilities (Java)
 
-**JSONViewerTool Utilities** is a lightweight Java library that provides common utilities for  
-**validating, formatting, and working with JSON**, designed as part of the **JSONViewerTool ecosystem**.
+`jsonviewertool-utils` currently provides one small Java helper for checking
+whether a string has the outer shape of a JSON object or array.
 
-🔹 Simple APIs  
-🔹 Developer-friendly  
-🔹 Ideal for backend services, tools, and internal utilities  
+> **Important:** version `0.1.0` does not parse JSON syntax. It only trims the
+> input and checks for matching outer `{ ... }` or `[ ... ]` delimiters. Use a
+> JSON parser when you need standards-compliant validation.
 
----
+## Installation
 
-## 🚀 Features
-
-- ✅ JSON validation (syntax checks)
-- ✅ JSON formatting / pretty printing
-- ✅ Safe, fast, lightweight utilities
-- ✅ Designed for extensibility
-- ✅ Works well with REST APIs, configs, and data pipelines
-
----
-
-## 📦 Maven Central
-
-Add the dependency to your project:
+The published Maven Central version is `0.1.0`.
 
 ### Maven
+
 ```xml
 <dependency>
   <groupId>com.jsonviewertool</groupId>
   <artifactId>jsonviewertool-utils</artifactId>
-  <version>1.0.0</version>
+  <version>0.1.0</version>
 </dependency>
 ```
 
 ### Gradle
-```
-implementation 'com.jsonviewertool:jsonviewertool-utils:1.0.0'
-```
 
-## 🧠 Example Usage
-```
-import com.jsonviewertool.utils.JsonUtils;
-
-String json = "{ \"name\": \"Avinash\", \"tool\": \"JSONViewerTool\" }";
-
-// Validate JSON
-boolean isValid = JsonUtils.isValid(json);
-
-// Format JSON
-String formatted = JsonUtils.prettyPrint(json);
+```gradle
+implementation 'com.jsonviewertool:jsonviewertool-utils:0.1.0'
 ```
 
-## 🌐 JSONViewerTool Ecosystem
+## Usage
 
-This library is part of JSONViewerTool, a privacy-first, client-side toolkit with 60+ free tools for developers.
+```java
+import com.jsonviewertool.JsonUtils;
 
-### 🔗 Useful Links
+boolean objectLike = JsonUtils.isValidJson("{\"name\":\"Ada\"}");
+boolean arrayLike = JsonUtils.isValidJson("[1,2,3]");
+boolean scalarLike = JsonUtils.isValidJson("42"); // false
+```
 
-- 🌐 Website: https://jsonviewertool.com
-- 📚 Docs: https://jsonviewertool.gitbook.io/docs
-- 🧰 Online Tools: https://jsonviewertool.com/
-- 🐍 PyPI CLI: https://pypi.org/project/jsonviewertool-cli/
+The method name is retained for compatibility with the published artifact, but
+the result should be interpreted as a container-shape check. For example,
+`JsonUtils.isValidJson("{]")` returns `true` in version `0.1.0` because the
+method does not inspect tokens inside the outer delimiters.
 
-### 🔒 Privacy & Philosophy
+## Links
 
-- No telemetry
-- No tracking
-- Developer-first design
-- Focused on performance and simplicity
+- [Maven Central](https://central.sonatype.com/artifact/com.jsonviewertool/jsonviewertool-utils/0.1.0)
+- [Library documentation](https://jsonviewertool-utils.readthedocs.io/en/latest/)
+- [JSONViewerTool browser tools](https://jsonviewertool.com/)
 
-### 🤝 Contributing
+JSONViewerTool includes browser-based tools for viewing, formatting, validating,
+comparing and converting JSON. The website is free to use without an account
+and includes ads and analytics.
 
-Contributions are welcome 🙌
-Feel free to:
-Open issues
-Submit pull requests
-Suggest new utilities
+## Contributing
 
-### ⭐ Support
+Issues and focused pull requests are welcome. A future release should replace
+the shallow check with real parsing before describing the method as JSON syntax
+validation.
 
-If you find this project useful:
-- ⭐ Star the repo
-- 🔁 Share with other developers
-- 💬 Provide feedback
+## License
 
-[![Documentation Status](https://readthedocs.org/projects/jsonviewertool-utils/badge/?version=latest)](https://jsonviewertool-utils.readthedocs.io/en/latest/)
-
-### Built with ❤️ by the JSONViewerTool team
+MIT
